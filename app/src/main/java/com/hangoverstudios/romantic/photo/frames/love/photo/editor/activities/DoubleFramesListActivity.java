@@ -81,18 +81,7 @@ public class DoubleFramesListActivity extends AppCompatActivity {
         });
         showLoadingDialog();
         prepareDoubleFramesList();
-       /* if(RemoteConfigValues.getOurRemote().getShowNativeAd() != null){
-            if(RemoteConfigValues.getOurRemote().getShowNativeAd().equals("true")){
-                loadAdMobNativeAds();
-            }else{
-                adLoaded = true;
-                prepareDoubleFramesList();
-            }
-        }
-        else {
-            adLoaded = true;
-            prepareDoubleFramesList();
-        }*/
+
     }
     private void loadBanner() {
 
@@ -225,38 +214,7 @@ public class DoubleFramesListActivity extends AppCompatActivity {
                 card_templates_rv.setAdapter(doubleFrameAdapter);
 
             }
-           /* if (adLoaded && dataLoaded) {
 
-
-                //add ad to cautionList
-                if (doubleFramesThumbList.size() > 0 && mNativeAds.size() > 0 && doubleFramesThumbList.size() > 2) {
-                    doubleFramesThumbList.add(1, mNativeAds.get(0));
-                    doubleFramesList.add(1,null);
-                }
-                if (doubleFramesThumbList.size() > 5 && mNativeAds.size() > 1) {
-                    doubleFramesThumbList.add(5, mNativeAds.get(1));
-                    doubleFramesList.add(5,null);
-                }
-                if (doubleFramesThumbList.size() > 9 && mNativeAds.size() > 2) {
-                    doubleFramesThumbList.add(9, mNativeAds.get(2));
-                    doubleFramesList.add(9,null);
-                }
-                if (doubleFramesThumbList.size() > 13 && mNativeAds.size() > 3) {
-                    doubleFramesThumbList.add(13, mNativeAds.get(3));
-                    doubleFramesList.add(13,null);
-                }
-                if(doubleFramesThumbList.size() != DataHolder.getDataHolder().getDoubleFramesList().size()){
-                    DataHolder.getDataHolder().getDoubleFramesList().clear();
-                    DataHolder.getDataHolder().getDoubleFramesList().addAll(doubleFramesList);
-                }
-                if (doubleFramesThumbList.size() > 0) {
-                    GridLayoutManager gridLayoutManager = new GridLayoutManager(DoubleFramesListActivity.this, 1);
-                    card_templates_rv.setLayoutManager(gridLayoutManager);
-                    DoubleFrameAdapter doubleFrameAdapter = new DoubleFrameAdapter(doubleFramesThumbList, this, 2);
-                    card_templates_rv.setAdapter(doubleFrameAdapter);
-
-                }
-            }*/
         }
 
     }

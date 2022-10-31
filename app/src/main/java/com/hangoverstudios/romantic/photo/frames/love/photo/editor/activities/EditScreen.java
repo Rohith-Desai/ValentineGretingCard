@@ -609,33 +609,6 @@ public class EditScreen extends AppCompatActivity implements ThumbnailCallback {
 //        frameLay.setDrawingCacheEnabled(false);
     }
 
-    Bitmap CropBitmapTransparencyS(Bitmap sourceBitmap) {
-        int minX = sourceBitmap.getWidth();
-        int minY = sourceBitmap.getHeight();
-        int maxX = -1;
-        int maxY = -1;
-        for (int y = 0; y < sourceBitmap.getHeight(); y++) {
-            for (int x = 0; x < sourceBitmap.getWidth(); x++) {
-                int alpha = (sourceBitmap.getPixel(x, y) >> 24) & 255;
-                if (alpha > 0)   // pixel is not 100% transparent
-                {
-                    if (x < minX)
-                        minX = x;
-                    if (x > maxX)
-                        maxX = x;
-                    if (y < minY)
-                        minY = y;
-                    if (y > maxY)
-                        maxY = y;
-                }
-            }
-        }
-        if ((maxX < minX) || (maxY < minY))
-            return null; // Bitmap is entirely transparent
-
-        // crop bitmap to non-transparent area and return:
-        return Bitmap.createBitmap(sourceBitmap, minX, minY, (maxX - minX) + 1, (maxY - minY) + 1);
-    }
 
     private void changeOPacity(int progresValue) {
         if (mCurrentView != null) {
@@ -659,22 +632,6 @@ public class EditScreen extends AppCompatActivity implements ThumbnailCallback {
                     mCurrentView.effectBitmap = mCurrentView.originalBitmap;
                 }
             }
-
-//            bitmap.a(progresValue * 25);
-            /*final Paint paint = new Paint();
-            Canvas canvas = new Canvas(bitmap);
-
-            paint.setAlpha(100);*/
-//            canvas.drawRect(0, 0, bitmap.getWidth(), bitmap.getHeight(), paint);
-//            canvas.drawBitmap(bitmap, 0, 0, paint);
-
-            /*Bitmap transBmp = Bitmap.createBitmap(mCurrentView.getBitmap().getWidth(),
-                    mCurrentView.getBitmap().getHeight(), Bitmap.Config.ARGB_8888);
-            Canvas canvas = new Canvas(transBmp);
-            final Paint paint = new Paint();
-            paint.setAlpha((int) 0.5f);
-            canvas.drawRect(0, 0, bitmap.getWidth(), bitmap.getHeight(), paint);*/
-//            canvas.drawBitmap(mCurrentView.getBitmap(), 0, 0, paint);
 
             if (newBitmap != null) {
                 mCurrentView.setBitmap(newBitmap, "blend");
@@ -704,45 +661,6 @@ public class EditScreen extends AppCompatActivity implements ThumbnailCallback {
         AlertDialog alertDialog = dialog.create();
         alertDialog.show();
     }
-
-   /* private void changeImgWithDouble() {
-        final Dialog dialog = new Dialog(this);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setCancelable(false);
-        dialog.setContentView(R.layout.activity_doubletap);
-        TextView t1 = dialog.findViewById(R.id.text_dialog);
-        TextView t2 = dialog.findViewById(R.id.head121);
-        t2.setText(R.string.change_image);
-        t1.setText(R.string.change_img_msg);
-
-
-        Button dialogButton = (Button) dialog.findViewById(R.id.btn_dialog);
-        dialogButton.setText(R.string.ok);
-        dialogButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
-
-        dialog.show();
-
-        *//*android.app.AlertDialog.Builder dialog = new android.app.AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AlertDialogCustom));
-        dialog.setMessage("If you want to change your image, double click on your image!");
-        dialog.setTitle("Change Image!");
-        dialog.setNegativeButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
-        android.app.AlertDialog alertDialog = dialog.create();
-        alertDialog.show();*//*
-        SharedPreferences pref = getApplicationContext().getSharedPreferences("N_Photo_Frames", MODE_PRIVATE);
-        SharedPreferences.Editor editor = pref.edit();
-        editor.putBoolean("isDoublePop", true);
-        editor.apply();
-    }*/
 
     private void preparData() {
         PhotoFilter photoFilter = new PhotoFilter();
@@ -819,11 +737,7 @@ public class EditScreen extends AppCompatActivity implements ThumbnailCallback {
         for (int i = 1; i <= 38; i++) {
             mResources.add(getResources().getIdentifier("sticker_" + i, "drawable", Objects.requireNonNull(this).getPackageName()));
         }
-       /* mResources.add(R.drawable.sticker_1);
-        mResources.add(R.drawable.sticker_2);
-        mResources.add(R.drawable.sticker_3);
-        mResources.add(R.drawable.sticker_4);
-        mResources.add(R.drawable.sticker_5);*/
+
         stickerRecyclerView.setVisibility(View.VISIBLE);
         LinearLayoutManager layoutManager
                 = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
@@ -832,15 +746,7 @@ public class EditScreen extends AppCompatActivity implements ThumbnailCallback {
         stickerRecyclerView.setAdapter(stickerPreviewAdapter);
     }
 
-    private void openBorders() {
-        prepareList(bordersShortList, 201);
-    }
 
-    private void openFilter() {
-//        l2.setDrawingCacheEnabled(true);
-//        filterBitMap = l2.getDrawingCache();
-        prepareList(filtersShortList, 301);
-    }
 
 
     private void initHorizontalList() {
@@ -881,18 +787,6 @@ public class EditScreen extends AppCompatActivity implements ThumbnailCallback {
     }
 
 
-    private void getAllCreations() {
-
-        String path = Environment.getExternalStorageDirectory().toString() + "/" + getString(R.string.app_name);
-        Log.d("Files", "Path: " + path);
-        File directory = new File(path);
-        File[] files = directory.listFiles();
-        Log.d("Files", "Size: " + files.length);
-        for (int i = 0; i < files.length; i++) {
-            Log.d("Files", "FileName:" + files[i].getName());
-        }
-        System.out.println(files.length);
-    }
 
     private void openAlertDialog() {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.MyCustomTheme);
@@ -912,7 +806,6 @@ public class EditScreen extends AppCompatActivity implements ThumbnailCallback {
         } else {
             adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, types);
         }
-//        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, types);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -974,38 +867,7 @@ public class EditScreen extends AppCompatActivity implements ThumbnailCallback {
                         textView.setTypeface(type_14);
                         selectedType = type_14;
                         break;
-//                    case 14:
-//                        textView.setTypeface(type_15);
-//                        selectedType = type_15;
-//                        break;
-//                    case 15:
-//                        textView.setTypeface(type_16);
-//                        selectedType = type_16;
-//                        break;
-//                    case 16:
-//                        textView.setTypeface(type_17);
-//                        selectedType = type_17;
-//                        break;
-//                    case 17:
-//                        textView.setTypeface(type_18);
-//                        selectedType = type_18;
-//                        break;
-//                    case 18:
-//                        textView.setTypeface(type_19);
-//                        selectedType = type_19;
-//                        break;
-//                    case 19:
-//                        textView.setTypeface(type_20);
-//                        selectedType = type_20;
-//                        break;
-//                    case 20:
-//                        textView.setTypeface(type_21);
-//                        selectedType = type_21;
-//                        break;
-//                    case 21:
-//                        textView.setTypeface(type_22);
-//                        selectedType = type_22;
-//                        break;
+//
                 }
             }
 
@@ -1032,7 +894,7 @@ public class EditScreen extends AppCompatActivity implements ThumbnailCallback {
             }
 
         });
-//        spinner.setTe
+
         enteredText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -1132,24 +994,12 @@ public class EditScreen extends AppCompatActivity implements ThumbnailCallback {
 
             type_1 = Typeface.createFromAsset(getAssets(), "fonts/suravaram.ttf");
             type_2 = Typeface.createFromAsset(getAssets(), "fonts/gidugu.ttf");
-//            type_3 = Typeface.createFromAsset(getAssets(), "fonts/gurajada.ttf");
-//            type_4 = Typeface.createFromAsset(getAssets(), "fonts/lakkireddy.ttf");
-//            type_5 = Typeface.createFromAsset(getAssets(), "fonts/mallanna.ttf");
-//            type_6 = Typeface.createFromAsset(getAssets(), "fonts/ntr.ttf");
-//            type_7 = Typeface.createFromAsset(getAssets(), "fonts/ramabhadra.ttf");
-//            type_8 = Typeface.createFromAsset(getAssets(), "fonts/raviprakash.ttf");
-//            type_9 =
-//            type_10 = Typeface.createFromAsset(getAssets(), "fonts/suravaram.ttf");
-//            type_11 = Typeface.createFromAsset(getAssets(), "fonts/tenaliramakrishna.ttf");
-//            type_12 = Typeface.createFromAsset(getAssets(), "fonts/timmana.ttf");
+
 
         } else {
 
             selectedType = Typeface.createFromAsset(getAssets(), "fonts/new_five.ttf");
-//            type_1 = Typeface.createFromAsset(getAssets(), "fonts/new_five.ttf");
-//            type_2 = Typeface.createFromAsset(getAssets(), "fonts/new_one.ttf");
-//            type_3 = Typeface.createFromAsset(getAssets(), "fonts/new_six.ttf");
-//            type_4 = Typeface.createFromAsset(getAssets(), "fonts/new_two.ttf");
+
             type_1 = Typeface.createFromAsset(getAssets(), "fonts/BrushScriptStd.otf");
             type_2 = Typeface.createFromAsset(getAssets(), "fonts/FancyPantsNF.otf");
             type_3 = Typeface.createFromAsset(getAssets(), "fonts/Fiddums Family.ttf");
@@ -1157,7 +1007,6 @@ public class EditScreen extends AppCompatActivity implements ThumbnailCallback {
             type_5 = Typeface.createFromAsset(getAssets(), "fonts/FUNDR__.TTF");
             type_6 = Typeface.createFromAsset(getAssets(), "fonts/HoboStd.otf");
             type_7 = Typeface.createFromAsset(getAssets(), "fonts/hotpizza.ttf");
-//            type_12 = Typeface.createFromAsset(getAssets(), "fonts/micross.ttf");
             type_8 = Typeface.createFromAsset(getAssets(), "fonts/NuevaStd-Bold.otf");
             type_9 = Typeface.createFromAsset(getAssets(), "fonts/NuevaStd-BoldCond.otf");
             type_10 = Typeface.createFromAsset(getAssets(), "fonts/NuevaStd-BoldCondItalic.otf");
@@ -1238,56 +1087,6 @@ public class EditScreen extends AppCompatActivity implements ThumbnailCallback {
         return image;
     }
 
-    public Bitmap textAsBitmap1(String text, float textSize, int textColor, Typeface selectedType) {
-        Paint paint = new TextPaint();
-        DisplayMetrics dm = getResources().getDisplayMetrics();
-        paint.setTextSize(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, textSize, dm));
-        paint.setTypeface(selectedType);
-        paint.setColor(textColor);
-        paint.setTextAlign(Paint.Align.CENTER);
-        paint.setAntiAlias(true);
-        float baseline = -paint.ascent(); // ascent() is negative
-        int width = (int) (paint.measureText(text) + 0.0f); // round
-        int height = (int) (baseline + paint.descent() + 0.0f);
-        Bitmap image = Bitmap.createBitmap(width, height, Config.ARGB_8888);
-
-        Canvas canvas = new Canvas(image);
-
-//        for (String line: text.split("\n"))
-//        {
-//            canvas.drawText(line, 0, baseline, paint);
-//            baseline += -paint.ascent() + paint.descent();
-//        }
-//
-//        String[] lines = text.split("\n");
-//        float lineSpace = textSize * 0.2f;
-//
-//        float TReheight = (lines.length * (baseline + lineSpace) + baseline);
-//        float top = (image.getHeight() - height) / 2;
-//        top += baseline;
-//        for (String textsa : lines) {
-//            if (TextUtils.isEmpty(textsa)) {
-//                continue;
-//            }
-//            canvas.drawText(text, image.getWidth(), top, paint);
-//            top += baseline + lineSpace;
-//        }
-//        canvas.drawBitmap(image,0,0,null);
-//        canvas.drawBitmap(image, matrix, null);
-
-        String[] lines = text.split("\n");
-        float lineSpace = textSize * 0.7f;
-
-        image = Bitmap.createBitmap(width, height * lines.length, Config.ARGB_8888);
-        canvas.setBitmap(image);
-        for (int i = 0; i < lines.length; ++i) {
-            canvas.drawText(lines[i], 0, baseline + (textSize + lineSpace) * i, paint);
-//            image = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
-        }
-//        canvas.drawBitmap(image, 0, 0, null);
-//        canvas.drawText(text, 0, baseline, paint);
-        return image;
-    }
 
     public void reoveStickerBorders() {
         stickerRecyclerView.setVisibility(View.GONE);
@@ -1329,10 +1128,6 @@ public class EditScreen extends AppCompatActivity implements ThumbnailCallback {
 
     }
 
-    public void requestStoragePermission() {
-        ActivityCompat.requestPermissions((Activity) this, new String[]{READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE}, PERMISSION_REQUEST_CODE);
-
-    }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -1375,31 +1170,6 @@ public class EditScreen extends AppCompatActivity implements ThumbnailCallback {
         alertDialog.show();
     }
 
-    public void showPermisionDialog1() {
-        AlertDialog.Builder dialog = new AlertDialog.Builder(this, R.style.MyCustomTheme);
-        dialog.setMessage(getString(R.string.permission_request_msg));
-        dialog.setTitle(getString(R.string.permission_request));
-        dialog.setPositiveButton(getString(R.string.ok),
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog,
-                                        int which) {
-//                        if (!checkCameraPermission()) {
-//                            requestCameraPermission();
-//
-//                        }
-
-                    }
-                });
-        dialog.setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-                finish();
-            }
-        });
-        AlertDialog alertDialog = dialog.create();
-        alertDialog.show();
-    }
 
     public boolean saveImageToSDCard(Bitmap b) {
         if (b != null) {
@@ -1417,8 +1187,6 @@ public class EditScreen extends AppCompatActivity implements ThumbnailCallback {
 
             StringBuilder sb = new StringBuilder();
             sb.append(getApplicationContext().getExternalFilesDir(String.valueOf(getResources().getString(R.string.app_name))).getAbsolutePath());
-            //sb.append("/");
-            //sb.append(getResources().getString(R.string.MainFolderName));
             sb.append("/");
             sb.append(getResources().getString(R.string.app_name));
             File file = new File(sb.toString());
@@ -1426,10 +1194,7 @@ public class EditScreen extends AppCompatActivity implements ThumbnailCallback {
                 file.mkdirs();
             }
             StringBuilder sb2 = new StringBuilder();
-            //sb2.append(Environment.getExternalStorageDirectory().getAbsoluteFile());
             sb2.append(getApplicationContext().getExternalFilesDir(getResources().getString(R.string.app_name)).getAbsolutePath());
-            // sb2.append("/");
-            //sb2.append(getResources().getString(R.string.MainFolderName));
             sb2.append("/");
             sb2.append(getResources().getString(R.string.app_name));
             sb2.append("/");
@@ -1459,11 +1224,7 @@ public class EditScreen extends AppCompatActivity implements ThumbnailCallback {
     }
 
 
-    private void askRating() {
-//        if (!AppHelper.isRatingDone(this)) {
-//            startActivity(new Intent(EditScreen.this, Rating.class));
-//        }
-    }
+
 
     public void showDialog1(SandboxViewDouble s) {
 
@@ -1606,51 +1367,6 @@ public class EditScreen extends AppCompatActivity implements ThumbnailCallback {
 //                Canvas canvas = new Canvas();f
 //                canvas.drawBitmap(b, 382, 185, null);
                         int xCoord = 0, yCoord = 0;
-                        String serverImage = posName;
-//                            if (serverImage.contains("aapthi_frame") && CloudDatabase.getFirebase().getFrameUrl() != null) {
-//                                if (serverImage.contains(CloudDatabase.getFirebase().getFrameUrl())) {
-//                                    serverImage = serverImage.replace(CloudDatabase.getFirebase().getFrameUrl(), "");
-//                                }
-//                                serverImage = serverImage.replace(".png","");
-//                                String requiredString =serverImage;
-//                                System.out.println(requiredString);
-////                                String requiredString = serverImage.substring(serverImage.indexOf("e") + 1, serverImage.indexOf("."));
-//                                int a = Integer.parseInt(requiredString);
-//                                String serverCoordinates = CloudDatabase.getFirebase().getServerCoordinates();
-//                                if (serverCoordinates != null && !serverCoordinates.equals("")) {
-//                                    String[] a1 = serverCoordinates.split(",");
-//                                    String[] a2 = new String[a1.length];
-//                                    for(int i = a1.length-1 , j = 0; i>= 0 ; i--,j++){
-//                                        a2[j] = a1[i];
-//                                    }
-//                                    System.out.println(a2.length);
-//                                    String coordString = a2[a-1];
-//
-//                                    coordString = coordString.split("_")[1];
-//                                    System.out.println(coordString);
-////                                    String coordString = serverCoordinates.substring(serverCordinates.indexOf(requiredString + "_") + 3, serverCordinates.indexOf(",", serverCordinates.indexOf(requiredString + "_") + 1));
-//
-//                                    xCoord = Integer.parseInt(coordString.split(";")[0]);
-//                                    yCoord = Integer.parseInt(coordString.split(";")[1]);
-//
-//                                    if (xCoord != 0) {
-//                                        if (eds.global != null) {
-//                                            eds.global.setBitmap(eds.global.getBitmap(), xCoord, yCoord);
-//                                        }
-//                                    }
-//                                }
-//
-//
-//                            } else if(serverImage.contains("single_" )){
-//                                 String img =  serverImage.replace("single_","");
-//                                   img =  img.replace("single_","");
-//                                   img =  img.replace(".webp","");
-//                                int a = Integer.parseInt(img);
-//                                String coord = localCordinates[a-1];
-//                                xCoord = Integer.parseInt(coord.split(";")[0]);
-//                                yCoord = Integer.parseInt(coord.split(";")[1]);
-//
-//                            }
 
                         global.setBitmap(b);
                         if (global.getMyId() == 1) {
@@ -1696,49 +1412,7 @@ public class EditScreen extends AppCompatActivity implements ThumbnailCallback {
                     // image in frame
                     int xCoord = 0, yCoord = 0;
                     String serverImage = posName;
-//                    if (serverImage.contains("aapthi_frame")&& CloudDatabase.getFirebase().getFrameUrl() != null) {
-//                        if (serverImage.contains(CloudDatabase.getFirebase().getFrameUrl())) {
-//                            serverImage = serverImage.replace(CloudDatabase.getFirebase().getFrameUrl(), "");
-//                        }
-////                        String requiredString = serverImage.substring(serverImage.indexOf("e") + 1, serverImage.indexOf("."));
-//                        serverImage = serverImage.replace(".png","");
-//                        String requiredString =serverImage;
-//                        int a = Integer.parseInt(requiredString);
-//                        String serverCoordinates = CloudDatabase.getFirebase().getServerCoordinates();
-//                        if (serverCoordinates != null && !serverCoordinates.equals("")) {
-//                            String[] a1 = serverCoordinates.split(",");
-//                            String[] a2 = new String[a1.length];
-//                            for(int i = a1.length-1 , j = 0; i>= 0 ; i--,j++){
-//                                a2[j] = a1[i];
-//                            }
-//                            System.out.println(a2.length);
-//                            String coordString = a2[a-1];
-//
-//                            coordString = coordString.split("_")[1];
-//                            System.out.println(coordString);
-////                                    String coordString = serverCoordinates.substring(serverCordinates.indexOf(requiredString + "_") + 3, serverCordinates.indexOf(",", serverCordinates.indexOf(requiredString + "_") + 1));
-//
-//                            xCoord = Integer.parseInt(coordString.split(";")[0]);
-//                            yCoord = Integer.parseInt(coordString.split(";")[1]);
-//
-//                            if (xCoord != 0) {
-//                                if (eds.global != null) {
-//                                    eds.global.setBitmap(eds.global.getBitmap(), xCoord, yCoord);
-//                                }
-//                            }
-//                        }
-//
-//
-//                    }  else if(serverImage.contains("single_")){
-//                        String img =  serverImage.replace("single_","");
-//                        img =  img.replace("single_","");
-//                        img =  img.replace(".webp","");
-//                        int a = Integer.parseInt(img);
-//                        String coord = localCordinates[a-1];
-//                        xCoord = Integer.parseInt(coord.split(";")[0]);
-//                        yCoord = Integer.parseInt(coord.split(";")[1]);
-//
-//                    }
+
 
                     global.setBitmap(b);
                     if (global.getMyId() == 1) {
@@ -1968,42 +1642,7 @@ public class EditScreen extends AppCompatActivity implements ThumbnailCallback {
         setCurrentEdit(stickerView);
     }
 
-    Bitmap CropBitmapTransparency(Bitmap sourceBitmap) {
-        sourceBitmap.setHasAlpha(true);
-        int startWidth = sourceBitmap.getWidth();//  int minX
-        int startHeight = sourceBitmap.getHeight();//  int minY
-        int endWidth = -1;//  int maxX
-        int endHeight = -1;//  int maxY
-        for (int y = 0; y < sourceBitmap.getHeight(); y++) {
-            for (int x = 0; x < sourceBitmap.getWidth(); x++) {
-                int alpha = ((sourceBitmap.getPixel(x, y) & 0xff000000) >> 24);
-                //
-                if (alpha == 0)   // pixel is not 100% transparent
-                {
-                    // Log.d("Alpha",alpha+" ");
-                    if (x < startWidth)
-                        startWidth = x;
-                    if (x > endWidth)
-                        endWidth = x;
-                    if (y < startHeight)
-                        startHeight = y;
-                    if (y > endHeight)
-                        endHeight = y;
-                }
-            }
-        }
-        if ((endWidth < startWidth) || (endHeight < startHeight))
-            return null; // Bitmap is entirely transparent
-        Log.w("Startwidh = ", startWidth + " ");
-        Log.w("StartHeight = ", startHeight + " ");
-        Log.w("Endwidh = ", endWidth + " ");
-        Log.w("End Height = ", endHeight + " ");
 
-        // angle=getAngle(startWidth,startHeight,endWidth,endHeight);
-
-        // crop bitmap to non-transparent area and return:
-        return Bitmap.createBitmap(sourceBitmap, startWidth, startHeight, (endWidth - startWidth) + 1, (endHeight - startHeight) + 1);
-    }
 
     private void setCurrentEdit(StickerView stickerView) {
         if (mCurrentView != null) {
@@ -2016,58 +1655,7 @@ public class EditScreen extends AppCompatActivity implements ThumbnailCallback {
         stickerView.setInEdit(true);
     }
 
-    private void myMethod(int n) {
-        if (mCurrentView != null) {
-            if (mCurrentView.opacityBitmap) {
-                if (mCurrentView.effectBitmap != null) {
-                    Bitmap bitmap = mCurrentView.effectBitmap;
-                    Shader shaderA = new LinearGradient(mCurrentView.effectBitmap.getWidth() - n, 0, mCurrentView.effectBitmap.getWidth(), 0, 0xffffffff, 0x00ffffff, Shader.TileMode.CLAMP);
-                    Shader shaderB = new BitmapShader(bitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
-                    //Shader shaderC = new LinearGradient(0, 0, 100, bitmap.getHeight(), 0x00ffffff, 0xffffffff, Shader.TileMode.CLAMP);
-                    Shader shaderC = new LinearGradient(0, 0, 0, n, 0x00ffffff, 0xffffffff, Shader.TileMode.CLAMP);
-                    Shader shaderD = new LinearGradient(0, 0, n, 0, 0x00ffffff, 0xffffffff, Shader.TileMode.CLAMP);
-                    Shader shaderE = new LinearGradient(0, bitmap.getHeight() - n, 0, bitmap.getHeight(), 0xffffffff, 0x00ffffff, Shader.TileMode.CLAMP);
-                    Shader shader1 = new ComposeShader(shaderA, shaderB, PorterDuff.Mode.SRC_IN);
-                    Shader shader2 = new ComposeShader(shaderC, shader1, PorterDuff.Mode.SRC_IN);
-                    Shader shader3 = new ComposeShader(shaderD, shader2, PorterDuff.Mode.SRC_IN);
-                    Paint paint = new Paint();
-                    paint.setShader(new ComposeShader(shaderE, shader3, PorterDuff.Mode.SRC_IN));
-                    //lets create a new empty bitmap
-                    Bitmap newBitmap = Bitmap.createBitmap(mCurrentView.effectBitmap.getWidth(), mCurrentView.effectBitmap.getHeight(), Config.ARGB_8888);
-//        // create a canvas where we can draw on
-                    Canvas canvas = new Canvas(newBitmap);
 
-                    canvas.drawRect(0, 0, bitmap.getWidth(), bitmap.getHeight(), paint);
-//                mCurrentView.effectBitmap = newBitmap;
-                    mCurrentView.setBitmap(newBitmap, "blend");
-                    mCurrentView.styleBitmpa = true;
-                }
-            } else {
-                if (mCurrentView.originalBitmap != null) {
-                    Bitmap bitmap = mCurrentView.originalBitmap;
-                    Paint paint = new Paint();
-                    Shader shaderA = new LinearGradient(mCurrentView.getBitmap().getWidth() - n, 0, mCurrentView.getBitmap().getWidth(), 0, 0xffffffff, 0x00ffffff, Shader.TileMode.CLAMP);
-                    Shader shaderB = new BitmapShader(bitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
-                    //Shader shaderC = new LinearGradient(0, 0, 100, bitmap.getHeight(), 0x00ffffff, 0xffffffff, Shader.TileMode.CLAMP);
-                    Shader shaderC = new LinearGradient(0, 0, 0, n, 0x00ffffff, 0xffffffff, Shader.TileMode.CLAMP);
-                    Shader shaderD = new LinearGradient(0, 0, n, 0, 0x00ffffff, 0xffffffff, Shader.TileMode.CLAMP);
-                    Shader shaderE = new LinearGradient(0, bitmap.getHeight() - n, 0, bitmap.getHeight(), 0xffffffff, 0x00ffffff, Shader.TileMode.CLAMP);
-                    Shader shader1 = new ComposeShader(shaderA, shaderB, PorterDuff.Mode.SRC_IN);
-                    Shader shader2 = new ComposeShader(shaderC, shader1, PorterDuff.Mode.SRC_IN);
-                    Shader shader3 = new ComposeShader(shaderD, shader2, PorterDuff.Mode.SRC_IN);
-                    paint.setShader(new ComposeShader(shaderE, shader3, PorterDuff.Mode.SRC_IN));
-                    // lets create a new empty bitmap
-                    Bitmap newBitmap = Bitmap.createBitmap(mCurrentView.getBitmap().getWidth(), mCurrentView.getBitmap().getHeight(), Config.ARGB_8888);
-//        // create a canvas where we can draw on
-                    Canvas canvas = new Canvas(newBitmap);
-                    canvas.drawRect(0, 0, bitmap.getWidth(), bitmap.getHeight(), paint);
-                    mCurrentView.effectBitmap = newBitmap;
-                    mCurrentView.setBitmap(newBitmap, "blend");
-                    mCurrentView.styleBitmpa = true;
-                }
-            }
-        }
-    }
 
     @Override
     protected void onRestart() {

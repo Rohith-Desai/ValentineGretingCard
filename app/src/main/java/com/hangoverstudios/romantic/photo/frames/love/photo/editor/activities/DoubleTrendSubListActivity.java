@@ -103,11 +103,8 @@ public class DoubleTrendSubListActivity extends AppCompatActivity {
         greetingPotList.clear();
         prepareList();
 
-//        greetingPotList  = DataHolder.getDataHolder().getSingleFramesList();
         if (greetingPotList != null) {
             if (greetingPotList.size() > 0) {
-//            LinearLayoutManager layoutManager
-//                    = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
                 GridLayoutManager gridLayoutManager = new GridLayoutManager(DoubleTrendSubListActivity.this, 1);
                 double_tend_sub_recycle.setLayoutManager(gridLayoutManager);
                 SubDoubleAdapter greetingsAdapter = new SubDoubleAdapter(greetingPotList, DoubleTrendSubListActivity.this, 2);
@@ -177,7 +174,6 @@ public class DoubleTrendSubListActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-//        CommonMethods.getInstance().showGoogleAd(DoubleTrendSubListActivity.this);
     }
     
 }
