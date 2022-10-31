@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?><!-- START xml_defaults -->
+<defaultsMap>
+    <entry>
+        <key>firebase_remote_config</key>
+        <value>{
+            "upgradeAppVersion": "1",
+            "showInterstitialOnLaunch": "false",
+            "showInterstitialOnExit": "true",
+            "showInterstitialAd": "false",
+            "InterstitialOnlyGoogle": "true",
+            "InterstitialOnlyFB": "true",
+            "AdRotationPolicy": "false",
+            "AdRotationPolicyNative": "false",
+            "showNativeAd": "true",
+            "showNativeAdOnMainScreen": "true",
+            "NativeOnlyGoogle": "true",
+            "NativeOnlyFB": "false",
+            "showOurAppInterstitials": "false",
+            "OurApps": "false",
+            "enableIAPflag": "false",
+            "singleFramesCount": "38",
+            "greetingCardsCount": "28",
+            "allFramesCount": "20",
+            "singleFrames": "",
+            "doubleFrames": "",
+            "doubleThumbs": "",
+            "greetingCards": "",
+            "shapesFrames": "",
+            "trendingSingleFrames": "",
+            "trendingSingleThumbs": "",
+            "trendingDoubleFrames": "",
+            "trendingDoubleThumbs": "",
+            "trendingGreetingCards": "",
+            "ShowRatingLayout":"",
+            "atCatSelection":"",
+            "singleLoveUrl":"",
+            "doubleLoveUrl":"",
+            "trendingGreetingThumbs": ""
+            }
+        </value>
+    </entry>
+</defaultsMap>
+    <!--Remote Config Values:
+    {
+    “upgradeAppVersion”: “1",
+    “showInterstitialOnLaunch”: “true”,
+    “showInterstitialOnExit”: “true”,
+    “showInterstitialAd”: “true”,
+    “InterstitialOnlyGoogle”: “true”,
+    “InterstitialOnlyFB”: “true”,
+    “AdRotationPolicy”: “false”,
+    “AdRotationPolicyNative”: “false”,
+    “showNativeAd”: “true”,
+    “showNativeAdOnMainScreen”: “true”,
+    “NativeOnlyGoogle”: “true”,
+    “NativeOnlyFB”: “false”,
+    “showOurAppInterstitials”: “false”,
+    “OurApps”: “false”
+    }-->

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+       <FrameLayout
+        android:id="@+id/edit_activity_banner_ad"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentTop="true" />
+
+    <LinearLayout
+        android:id="@+id/layout_canvas"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="40dp"
+        android:orientation="horizontal" />
+
+    <RelativeLayout
+        android:id="@+id/rl_content_root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="40dp"
+        android:background="@color/white"
+        android:gravity="center">
+
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/stickers_preview_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/grey"
+        android:scrollbars="horizontal"
+        android:translationZ="5dp"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/card_edit_bottom_panel"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/back_to_main"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:gravity="bottom"
+            android:orientation="vertical"
+            android:visibility="visible"
+            >
+
+            <ImageView
+                android:id="@+id/delete_img_icon"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/back_icon_3"
+                />
+
+            <!--  <TextView
+                  android:layout_width="match_parent"
+                  android:layout_height="0dp"
+                  android:layout_weight="0.65"
+                  android:gravity="center_horizontal"
+                  android:text="Delete"
+                  android:textColor="@color/black"
+                  android:textSize="10sp" />-->
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:src="@drawable/check_mark"
+            android:visibility="invisible" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="70dp">
+
+            <ImageView
+                android:id="@+id/new_element"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/plus_icon_2" />
+        </androidx.cardview.widget.CardView>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:src="@drawable/check_mark"
+            android:visibility="invisible" />
+
+        <ImageView
+            android:id="@+id/save_img"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:src="@drawable/check_mark_2" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/new_hidden_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone" />
+    <FrameLayout
+        android:layout_marginTop="60dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/sticker_fragment_container"
+        android:visibility="visible"
+        />
+</RelativeLayout>

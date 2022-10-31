@@ -1,0 +1,86 @@
+<resources>
+    <string name="app_name">Romantic Photo Editor : Love Photo Frames</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="file_provider_authority" translatable="false">com.hangoverstudios.romantic.photo.frames.love.photo.editor.fileprovider</string>
+    <string name="cancel">Cancel</string>
+    <string name="permission_request">Permission request.</string>
+    <string name="permission_request_msg">With out permission app won\'t work properly.</string>
+    <string name="ok">OK</string>
+    <string name="rate_us_nav">Rate Us</string>
+
+
+    <!--test ad id's-->
+     <!--<string name="admob_app_id">ca-app-pub-3940256099942544~3347511713</string>
+    <string name="admob_banner_id">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="admob_interstitial_id">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="admob_reward_id">"ca-app-pub-3940256099942544/5224354917"</string>
+    <string name="admob_native_id">ca-app-pub-3940256099942544/2247696110</string>-->
+
+    <!--real time ad id's-->
+    <string name="admob_app_id">ca-app-pub-9569880823887785~5539745877</string>
+    <string name="admob_banner_id">ca-app-pub-9569880823887785/2472946442</string>
+    <string name="admob_interstitial_id">ca-app-pub-9569880823887785/1570928313</string>
+    <string name="admob_native_id">ca-app-pub-9569880823887785/9066274956</string>
+
+    <!--App ID: ca-app-pub-9569880823887785~5539745877
+    Banner: ca-app-pub-9569880823887785/2472946442
+    Interstitial: ca-app-pub-9569880823887785/1570928313
+    Reward Interstitial: ca-app-pub-9569880823887785/5318601633
+    Reward: ca-app-pub-9569880823887785/1379356627
+    Native Advanced: ca-app-pub-9569880823887785/9066274956
+    App open: ca-app-pub-9569880823887785/6286044853-->
+
+    <string name="directory">Greeting Cards</string>
+    <string name="recommand_message">Let me recommend you this application!</string>
+    <string name="update_text">New version available. Please update app</string>
+    <string name="update_button">UPDATE</string>
+
+    <string name="no_whatsapp_app">No Whatsup app</string>
+    <string name="no_facebook_app">No Facebook app</string>
+    <string name="no_instagram_app">No Instagram App</string>
+    <string name="saved_image_message">Photo saved successfully</string>
+    <string name="tab_title_stores">Share</string>
+    <string name="error_img_not_found">Oops! please try again.</string>
+
+    <string name="album">Album</string>
+    <string name="share">Share</string>
+    <string name="save">Save</string>
+    <string name="text">Text</string>
+    <string name="filters">Filters</string>
+    <string name="border">Border</string>
+    <string name="stickers">Stickers</string>
+    <string name="frames">Frames</string>
+    <string name="add">Add</string>
+    <string name="creations">Creations</string>
+    <string name="more">More</string>
+    <string name="blend">Blend</string>
+
+    <string name="enter_text">Enter Text..</string>
+    <string name="style">Style :</string>
+    <string name="color">Color :</string>
+    <string name="shadow">Shadow :</string>
+
+    <string name="take_camera">Take from Camera</string>
+    <string name="select_gallery">Select from Gallery</string>
+    <string name="new_picture">New Picture</string>
+    <string name="from_camera">From your Camera</string>
+    <string name="select_option">Select Option</string>
+
+    <string name="change_image">Change Image!</string>
+    <string name="change_img_msg">If you want to change your image, double click on your image!</string>
+    <string name="change_msg">Are you sure, Do you want to change the image?</string>
+
+    <string name="require_attention">Download Image!</string>
+
+    <string name="download_msg">Are you sure, you want to download ?</string>
+
+    <string name="no_imgaes">No Imgaes to show</string>
+    <string name="downloading_frame">Downloading Frame</string>
+
+
+    <string name="send_us_feedback">Send Us Feedback</string>
+    <string name="share_experience_with_us">"Please share your experience with us"</string>
+
+
+</resources>

@@ -1,0 +1,71 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+<!--        <item name="android:textViewStyle">@style/Robotext</item>-->
+
+    </style>
+
+    <style name="CustomEditText" parent="Widget.AppCompat.EditText">
+        <item name="colorControlNormal">@color/colorPrimaryDark</item>
+        <item name="colorControlActivated">@color/colorPrimaryDark</item>
+        <item name="colorControlHighlight">@color/colorPrimaryDark</item>
+        <item name="android:layout_marginBottom">300dp</item>
+    </style>
+
+    <style name="shadowBlack">
+
+        <item name="android:shadowColor">#333333</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:shadowDx">2</item>
+        <item name="android:shadowDy">2</item>
+        <item name="android:shadowRadius">2</item>
+        <item name="android:layout_margin">2dp</item>
+
+    </style>
+    <style name="Robotext">
+        <item name="fontFamily">@font/andika</item>
+    </style>
+<!--    <style name="MyCustomTheme" parent="@android:style/Theme.Panel">-->
+<!--    <style name="MyCustomTheme" parent="@android:style/Theme.Holo">-->
+<!--    <style name="MyCustomTheme" parent="Theme.AppCompat.Light.Dialog.Alert">-->
+    <style name="MyCustomTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:windowAnimationStyle">@style/MyAnimation.Window</item>
+    </style>
+
+    <style name="MyAnimation.Window" parent="@android:style/Animation.Activity">
+        <item name="android:windowEnterAnimation">@anim/scale_zoom_out</item>
+        <item name="android:windowExitAnimation">@anim/scale_zoom_in</item>
+
+    </style>
+
+    <style name="DialogAnimationTransition">
+        <item name="android:windowEnterAnimation">@anim/scale_zoom_out</item>
+        <item name="android:windowExitAnimation">@anim/scale_zoom_in</item>
+    </style>
+
+    <style name="blackShadowText">
+        <item name="android:textStyle">bold</item>
+        <item name="android:shadowColor">#555</item>
+        <item name="android:shadowDx">2</item>
+        <item name="android:shadowDy">2</item>
+        <item name="android:shadowRadius">4</item>
+        <item name="android:layout_marginTop">5dp</item>
+    </style>
+    <style name="whiteShadowText">
+        <item name="android:textStyle">bold</item>
+        <item name="android:shadowColor">#eee</item>
+        <item name="android:shadowDx">2</item>
+        <item name="android:shadowDy">2</item>
+        <item name="android:shadowRadius">4</item>
+    </style>
+
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+</resources>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorPrimary">#cc336c</color>
+    <color name="colorPrimaryDark">#cc336c</color>
+    <color name="colorPrimaryDarks">#3700B3</color>
+    <color name="colorAccent">#4ABA99</color>
+    <color name="colorAccent1">#AA626D</color>
+    <color name="colorAccent2">#F5AC47</color>
+    <color name="nativeAd_bg">#ECD3DD</color>
+
+    <color name="grey">#E5E7E9</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="red">#FF0000</color>
+    <color name="blue">#0000FF</color>
+    <color name="transparent_black">#4D000000</color>
+    <color name="transparent_blue">#400000FF</color>
+    <color name="transparent">#00000000</color>
+    <color name="blue_2">#2196f3</color>
+    <color name="dark_grey">#515A5A </color>
+    <color name="yellow_2">#FFDB21</color>
+    <color name="water_mak_color_black">#80000000</color>
+    <color name="water_mak_color_white">#80F1EEEE</color>
+    <color name="dark_grey_2">#303030</color>
+    <color name="valentine_card_5_txt_color">#9b3810</color>
+    <color name="colorAccente">#B188FC</color>
+    <color name="colorPrimarye">#0072DC</color>
+    <color name="light_black">#191919</color>
+
+</resources>

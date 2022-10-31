@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "221725349545",
+    "project_id": "valentine-greetings-d46a5",
+    "storage_bucket": "valentine-greetings-d46a5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:221725349545:android:5bd0e06ada615439a4bbb8",
+        "android_client_info": {
+          "package_name": "com.hangoverstudios.romantic.photo.frames.love.photo.editor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "221725349545-5p6eqhnmba63l3fntk7s8av6hsr6dol0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5nlB1k7rms2cjbdNZA7IBSQVOIb3iZGY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "221725349545-5p6eqhnmba63l3fntk7s8av6hsr6dol0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

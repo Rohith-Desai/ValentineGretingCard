@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    tools:context="activities.EditScreen">
+
+    <LinearLayout
+        android:id="@+id/opt"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:layout_toStartOf="@+id/menu"
+        android:orientation="horizontal">
+
+        <FrameLayout
+            android:id="@+id/FrameLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/bglay"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/imageLay1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:orientation="horizontal"
+                    android:background="@drawable/bb"
+                    android:visibility="gone" />
+
+                <LinearLayout
+                    android:id="@+id/imageLay2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bb"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:orientation="horizontal" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/bg_frame"
+                android:layout_width="match_parent"
+                android:layout_gravity="center"
+                android:layout_height="match_parent"
+                android:background="@drawable/doublef_1"
+                android:orientation="horizontal"/>
+
+            <FrameLayout
+                android:id="@+id/border_linear"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/water_mark"
+                    android:text="VIHAS APPS"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="@color/white"
+                    android:textSize="34sp"
+                    android:gravity="bottom|right"
+                    android:layout_gravity="bottom"
+                    android:visibility="gone"/>
+            </FrameLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_gravity="end|bottom"
+                tools:listitem="@layout/sticker_item"
+                android:layout_margin="5dp"
+                android:id="@+id/stickers_recycle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_gravity="end|bottom"
+                android:id="@+id/edit_recycle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="70dp"
+                tools:listitem="@layout/single_filter_item"
+                android:visibility="gone">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+        </FrameLayout>
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:id="@+id/menu"
+        android:layout_width="60dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="3dp"
+        android:background="@color/colorPrimaryDark"
+        android:orientation="vertical"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp">
+
+
+        <TextView
+            android:id="@+id/frames"
+            style="@style/shadowBlack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:drawableTop="@drawable/ic_photo_library_black_24dp"
+            android:text="@string/frames"
+            android:textAlignment="center" />
+
+
+        <TextView
+            android:id="@+id/filters"
+            style="@style/shadowBlack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:drawableTop="@drawable/ic_photo_filter_black_24dp"
+            android:text="@string/filters"
+            android:textAlignment="center"
+            android:visibility="visible" />
+        <TextView
+            android:id="@+id/stickers"
+            style="@style/shadowBlack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:drawableTop="@drawable/ic_sentiment_satisfied_black_24dp"
+            android:text="@string/stickers"
+            android:textAlignment="center" />
+
+
+
+
+        <TextView
+            android:id="@+id/text_style"
+            style="@style/shadowBlack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:drawableTop="@drawable/ic_text_fields_black_24dp"
+            android:text="@string/text"
+            android:textAlignment="center" />
+
+
+        <TextView
+            android:id="@+id/save"
+            style="@style/shadowBlack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:drawableTop="@drawable/ic_save_black_24dp"
+            android:text="@string/save"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/whatsapp"
+            style="@style/shadowBlack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:drawableTop="@drawable/ic_share_black_24dp"
+            android:paddingTop="5dp"
+            android:text="@string/share"
+            android:textAlignment="center"
+            android:textColor="#fff"
+            android:visibility="gone" />
+
+
+        <TextView
+            android:id="@+id/album"
+            style="@style/shadowBlack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:drawableTop="@drawable/ic_photo_album_black_24dp"
+            android:text="@string/album"
+            android:textAlignment="center"
+            android:visibility="gone" />
+
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>
+
+
+
